@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Catálogo de Servicios 2026 · wowinX × doubleW</title>
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --bg-soft:#111;
+    --bg-card:#15151a;
+    --border:#26262d;
+    --text:#f5f5f5;
+    --text-dim:#a1a1aa;
+    --accent:#cefb00;
+    --accent-2:#7cf3a4;
+    --red:#ff4d4d;
+    --purple:#a855f7;
+    --blue:#3b82f6;
+    --green:#22c55e;
+    --orange:#f59e0b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .container{max-width:1280px;margin:0 auto;padding:0 32px}
+  section{padding:90px 0;border-bottom:1px solid var(--border)}
+  section:last-of-type{border-bottom:none}
+
+  /* NAV */
+  nav.topnav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(10,10,10,.85);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav.topnav .row{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  nav.topnav .logo{font-weight:800;letter-spacing:.05em;font-size:14px}
+  nav.topnav .logo .x{color:var(--accent)}
+  nav.topnav ul{list-style:none;display:flex;gap:22px}
+  nav.topnav a{color:var(--text-dim);font-size:13px;letter-spacing:.05em}
+  nav.topnav a:hover{color:var(--accent);text-decoration:none}
+  @media (max-width:780px){nav.topnav ul{display:none}}
+
+  /* HERO */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:120px 0 100px;border-bottom:1px solid var(--border);
+    background:#000;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background:url('assets/full/full-1.jpg') center/cover no-repeat;
+    opacity:.55;
+  }
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(900px 500px at 85% 0%, rgba(206,251,0,.15), transparent 60%),
+      linear-gradient(180deg, rgba(10,10,10,.5) 0%, rgba(10,10,10,.95) 100%);
+  }
+  .hero .container{position:relative;z-index:2}
+  .hero-tag{
+    display:inline-block;border:1px solid var(--border);
+    padding:6px 14px;border-radius:999px;
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--text-dim);margin-bottom:24px;background:rgba(0,0,0,.4);
+  }
+  .hero h1{
+    font-size:clamp(40px,5.5vw,76px);
+    line-height:1.05;letter-spacing:-.02em;font-weight:800;margin-bottom:20px;
+  }
+  .hero h1 .accent{color:var(--accent)}
+  .hero p.lead{font-size:18px;max-width:780px;color:#e0e0e0;margin-bottom:32px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .chip{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--border);background:rgba(17,17,17,.7);
+    padding:8px 14px;border-radius:999px;font-size:13px;color:var(--text-dim);
+  }
+  .chip .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+  /* HEADERS */
+  .eyebrow{font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  h2.section-title{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:14px}
+  .section-sub{color:var(--text-dim);max-width:820px;font-size:16px;margin-bottom:48px}
+
+  /* GALLERY ECOSISTEMA */
+  .eco-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;
+  }
+  .eco-card{
+    border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--bg-card);
+    transition:transform .25s ease,border-color .25s ease;
+  }
+  .eco-card:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .eco-card img{width:100%;height:180px;object-fit:cover}
+  .eco-card .body{padding:14px 16px}
+  .eco-card h4{font-size:14px;font-weight:700;margin-bottom:4px}
+  .eco-card p{font-size:12.5px;color:var(--text-dim)}
+
+  /* FULL BLEED BANNERS */
+  .fullbleed{
+    width:100%;background:#000;display:flex;justify-content:center;
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  }
+  .fullbleed img{width:100%;max-width:1600px;height:auto}
+
+  /* SEGMENTOS */
+  .seg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .seg-card{
+    background:linear-gradient(180deg,var(--bg-card),var(--bg-soft));
+    border:1px solid var(--border);border-radius:16px;padding:26px;
+    position:relative;overflow:hidden;
+  }
+  .seg-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--accent),transparent)}
+  .seg-card h3{font-size:20px;font-weight:700;margin-bottom:8px}
+  .seg-card .seg-sub{color:var(--accent);font-size:12px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px}
+  .seg-card ul{list-style:none;font-size:14px;color:var(--text-dim)}
+  .seg-card li{padding:6px 0;border-bottom:1px solid var(--border)}
+  .seg-card li:last-child{border-bottom:none}
+  .seg-card li b{color:var(--text);font-weight:600}
+
+  /* FICHAS DE EXPERIENCIA */
+  .exp-card{
+    background:var(--bg-card);border:1px solid var(--border);border-radius:18px;
+    overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:22px;
+    transition:border-color .25s ease;
+  }
+  .exp-card:hover{border-color:var(--accent)}
+  .exp-card.reverse{grid-template-columns:1fr 1fr}
+  .exp-card .visual{position:relative;min-height:340px;background:#000;overflow:hidden}
+  .exp-card .visual img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .exp-card .visual .play{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(0,0,0,.25);cursor:pointer;opacity:0;transition:opacity .25s;
+  }
+  .exp-card .visual:hover .play{opacity:1}
+  .exp-card .visual .play span{
+    width:64px;height:64px;border-radius:50%;background:var(--accent);color:#0a0a0a;
+    display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;
+  }
+  .exp-card .body{padding:30px 32px;display:flex;flex-direction:column;justify-content:center}
+  .exp-cat{
+    display:inline-block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    padding:5px 12px;border-radius:999px;font-weight:700;margin-bottom:14px;align-self:flex-start;
+  }
+  .cat-compite{background:rgba(255,77,77,.12);color:var(--red)}
+  .cat-diviertete{background:rgba(168,85,247,.14);color:var(--purple)}
+  .cat-entrena{background:rgba(59,130,246,.14);color:var(--blue)}
+  .cat-conecta{background:rgba(34,197,94,.14);color:var(--green)}
+  .cat-another{background:rgba(245,158,11,.14);color:var(--orange)}
+  .exp-card h3{font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em}
+  .exp-card .subtitle{color:var(--accent);font-size:13px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px}
+  .exp-card p.desc{color:var(--text-dim);font-size:14.5px;margin-bottom:18px}
+  .exp-specs{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;font-size:13px;color:var(--text-dim);
+    padding-top:18px;border-top:1px dashed var(--border);
+  }
+  .exp-specs b{color:var(--text);font-weight:600;display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px;color:var(--accent)}
+  @media (max-width:780px){
+    .exp-card{grid-template-columns:1fr}
+    .exp-card .visual{min-height:240px}
+    .exp-card .body{padding:24px}
+  }
+
+  /* PAQUETES */
+  .pkg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;align-items:stretch}
+  .pkg{
+    background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:28px;
+    display:flex;flex-direction:column;position:relative;
+  }
+  .pkg.featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset, 0 20px 60px -30px rgba(206,251,0,.4)}
+  .pkg .ribbon{
+    position:absolute;top:-12px;right:20px;background:var(--accent);color:#0a0a0a;
+    font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 12px;border-radius:999px;
+  }
+  .pkg .name{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px}
+  .pkg .tier{font-size:26px;font-weight:800;margin-bottom:4px;letter-spacing:-.01em}
+  .pkg .ideal{font-size:13px;color:var(--accent);margin-bottom:20px}
+  .pkg .feat-block{margin:14px 0;padding:14px 0;border-top:1px solid var(--border)}
+  .pkg .feat-block:first-of-type{border-top:none;padding-top:0}
+  .pkg .feat-title{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px}
+  .pkg ul{list-style:none}
+  .pkg li{font-size:13.5px;color:var(--text);padding:5px 0 5px 22px;position:relative}
+  .pkg li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:2px;background:var(--accent)}
+  .pkg .specs{
+    display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:var(--text-dim);
+    background:var(--bg);border-radius:10px;padding:12px;margin-top:14px;
+  }
+  .pkg .specs b{color:var(--accent);display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+
+  /* TABLA */
+  table{width:100%;border-collapse:collapse;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:14px}
+  th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--border)}
+  th{background:var(--bg-soft);color:var(--accent);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--text)}
+  .yes{color:var(--accent);font-weight:700}
+  .partial{color:var(--orange);font-weight:700}
+  .no{color:var(--text-dim)}
+
+  /* PROCESO */
+  .timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:32px}
+  .step{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:22px;position:relative}
+  .step .num{font-size:42px;font-weight:800;color:var(--accent);line-height:1;opacity:.4}
+  .step h4{font-size:16px;font-weight:700;margin:10px 0 6px}
+  .step p{font-size:13px;color:var(--text-dim)}
+
+  /* CASOS / MAPA */
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+  .twocol .pic{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#000}
+  .twocol .pic img{width:100%;height:auto;display:block}
+  @media (max-width:780px){.twocol{grid-template-columns:1fr}}
+
+  /* CTA */
+  .cta{background:radial-gradient(800px 400px at 50% 0%, rgba(206,251,0,.12), transparent 60%),var(--bg);text-align:center;padding:100px 0;border-top:1px solid var(--border)}
+  .cta h2{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+  .cta h2 .accent{color:var(--accent)}
+  .cta p{color:var(--text-dim);max-width:640px;margin:0 auto 28px;font-size:16px}
+  .btn{display:inline-block;background:var(--accent);color:#0a0a0a;padding:14px 32px;border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;transition:transform .2s ease}
+  .btn:hover{transform:translateY(-2px);text-decoration:none}
+  footer{padding:40px 0;text-align:center;color:var(--text-dim);font-size:13px;border-top:1px solid var(--border)}
+  footer .hq{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  footer .hq div b{color:var(--text);display:block;font-size:11px;letter-spacing:.2em}
+
+  /* VIDEO MODAL */
+  .modal{
+    position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;
+    align-items:center;justify-content:center;z-index:1000;padding:20px;
+  }
+  .modal.active{display:flex}
+  .modal .frame{width:100%;max-width:1100px;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;position:relative;border:1px solid var(--accent)}
+  .modal iframe,.modal video{width:100%;height:100%;border:0}
+  .modal .close{position:absolute;top:-44px;right:0;background:var(--accent);color:#0a0a0a;width:36px;height:36px;border-radius:50%;border:0;cursor:pointer;font-size:18px;font-weight:700}
+  .modal .placeholder-msg{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    flex-direction:column;gap:10px;color:var(--text-dim);font-size:14px;padding:20px;text-align:center;
+  }
+  .modal .placeholder-msg .big{color:var(--accent);font-size:18px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+  @media (max-width:640px){section{padding:60px 0}.container{padding:0 20px}.hero{padding:80px 0 70px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav">
+  <div class="container row">
+    <div class="logo">wowin<span class="x">X</span> × doubleW</div>
+    <ul>
+      <li><a href="#ecosistema">Ecosistema</a></li>
+      <li><a href="#segmentos">Clientes</a></li>
+      <li><a href="#experiencias">Experiencias</a></li>
+      <li><a href="#paquetes">Paquetes</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <span class="hero-tag">Dossier comercial · 2026</span>
+    <h1>Catálogo de <span class="accent">Experiencias VR</span><br/>wowinX × doubleW</h1>
+    <p class="lead">
+      Infraestructura inmersiva global: XR, IA y Web3 al servicio de marcas, agencias, clubes y eventos.
+      Convertimos cada activación en una nueva categoría experiencial, monetizable y memorable.
+    </p>
+    <div class="hero-meta">
+      <span class="chip"><span class="dot"></span> 5 categorías · 12 experiencias</span>
+      <span class="chip"><span class="dot"></span> 4 paquetes comerciales</span>
+      <span class="chip"><span class="dot"></span> +20 ciudades activadas</span>
+      <span class="chip"><span class="dot"></span> ES · EN · MENA · LATAM</span>
+    </div>
+  </div>
+</header>
+
+<!-- ECOSISTEMA -->
+<section id="ecosistema">
+  <div class="container">
+    <div class="eyebrow">El ecosistema</div>
+    <h2 class="section-title">Una infraestructura, dos motores comerciales</h2>
+    <p class="section-sub">
+      <b style="color:var(--text)">wowinX</b> imagina, produce y escala las IPs y experiencias.
+      <b style="color:var(--text)">doubleW</b> las convierte en negocio: estrategia, mercado, lanzamiento y proyección global.
+      Estudios y IPs propias dan soporte a toda la oferta.
+    </p>
+
+    <div class="eco-grid">
+      <div class="eco-card">
+        <img src="assets/full/full-3.jpg" alt="Ecosistema wowinX" />
+        <div class="body"><h4>Ecosistema</h4><p>Agencia (doubleW), estudios y IPs propias.</p></div>
+      </div>
+      <div class="eco-card">
+        <img src="assets/full/full-5.jpg" alt="BeFootball" />
+        <div class="body"><h4>BeFootball</h4><p>Nueva capa inmersiva del fútbol. Categoría, derechos y territorio.</p></div>
+      </div>
+      <div class="eco-card">
+        <img src="assets/full/full-6.jpg" alt="VR en marcas y eventos" />
+        <div class="body"><h4>VR para marcas y eventos</h4><p>Del espectador al protagonista. Engagement y diferenciación.</p></div>
+      </div>
+      <div class="eco-card">
+        <img src="assets/full/full-9.jpg" alt="Another reality" />
+        <div class="body"><h4>Another Reality</h4><p>Compite · Entrena · Conecta · Diviértete.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS DE ÉXITO + MAPA -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Track record</div>
+    <h2 class="section-title">Casos de éxito y huella global</h2>
+    <p class="section-sub">FIFA, LaLiga, adidas, Atlético de Madrid, RFEF, UEFA Champions League, Decathlon, MediaMarkt, Orange, Wanda Group, Legends, Soccerex. +20 ciudades en Europa, América y Medio Oriente.</p>
+    <div class="twocol">
+      <div class="pic"><img src="assets/full/full-7.jpg" alt="Casos de éxito wowinX" /></div>
+      <div class="pic"><img src="assets/full/full-8.jpg" alt="BeFootball por el mundo" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEGMENTOS -->
+<section id="segmentos">
+  <div class="container">
+    <div class="eyebrow">Segmentación comercial</div>
+    <h2 class="section-title">¿Para quién diseñamos?</h2>
+    <p class="section-sub">Cuatro tipologías de cliente con necesidades distintas. Cada una recibe un paquete recomendado, mix de experiencias y nivel de personalización ajustado a su objetivo de negocio.</p>
+
+    <div class="seg-grid">
+      <div class="seg-card">
+        <div class="seg-sub">Segmento 01</div>
+        <h3>Marcas &amp; Anunciantes</h3>
+        <ul>
+          <li><b>Objetivo:</b> Brand experience, awareness y diferenciación</li>
+          <li><b>Casos:</b> Lanzamientos, ferias, retail experiencial, sampling premium</li>
+          <li><b>Paquete:</b> Brand Experience (Pro / Signature)</li>
+          <li><b>KPIs:</b> Impactos, leads, dwell time, contenido UGC</li>
+        </ul>
+      </div>
+      <div class="seg-card">
+        <div class="seg-sub">Segmento 02</div>
+        <h3>Agencias de eventos &amp; BTL</h3>
+        <ul>
+          <li><b>Objetivo:</b> Diferenciar propuestas a sus clientes finales</li>
+          <li><b>Casos:</b> Activaciones llave en mano, fan zones, hospitality</li>
+          <li><b>Paquete:</b> Event Pack (Starter / Pro) + white label</li>
+          <li><b>KPIs:</b> Jugadores/h, satisfacción, repetición de cliente</li>
+        </ul>
+      </div>
+      <div class="seg-card">
+        <div class="seg-sub">Segmento 03</div>
+        <h3>Clubes, federaciones &amp; ligas</h3>
+        <ul>
+          <li><b>Objetivo:</b> Activar derechos, monetizar al fan, captar audiencias jóvenes</li>
+          <li><b>Casos:</b> Fan engagement matchday, museos, academias, giras</li>
+          <li><b>Paquete:</b> Sports IP (Signature / Custom)</li>
+          <li><b>KPIs:</b> Engagement, ticket avg, sponsors activados</li>
+        </ul>
+      </div>
+      <div class="seg-card">
+        <div class="seg-sub">Segmento 04</div>
+        <h3>Startups, marcas personales &amp; corporate</h3>
+        <ul>
+          <li><b>Objetivo:</b> Posicionar marca innovadora, eventos internos, formación</li>
+          <li><b>Casos:</b> Kick-offs, team building, convenciones, lanzamientos B2B</li>
+          <li><b>Paquete:</b> Corporate Pack (Starter / Pro)</li>
+          <li><b>KPIs:</b> NPS interno, percepción de marca, recall</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER FULL: tabla 5 categorías -->
+<div class="fullbleed"><img src="assets/full/full-10.jpg" alt="5 categorías de experiencias BeFootball" /></div>
+
+<!-- EXPERIENCIAS -->
+<section id="experiencias">
+  <div class="container">
+    <div class="eyebrow">Catálogo técnico</div>
+    <h2 class="section-title">12 experiencias · 5 categorías</h2>
+    <p class="section-sub">Inventario completo del dossier 2026. Cada ficha mantiene sus especificaciones técnicas oficiales y enlaza a su demo en vídeo (próximamente).</p>
+
+    <!-- VSSoccer 1v1 -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/exp/exp-12.jpg" alt="VSSoccer 1v1" />
+        <div class="play" data-video="vssoccer-1v1"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-compite">Compite</span>
+        <h3>VSSoccer</h3>
+        <div class="subtitle">Modo 1 vs 1</div>
+        <p class="desc">El fútbol de los VirtualSports. Duelo competitivo donde ataque (chutar) y defensa (parar) se ejecutan en un único movimiento. Reflejos, decisión inmediata e inteligencia táctica.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>2 jugadores</div>
+          <div><b>Duración</b>90 segundos</div>
+          <div><b>Rendimiento</b>12 jugadores/h</div>
+          <div><b>Personalización</b>Disponible</div>
+          <div><b>Staff</b>1 asistente/puesto</div>
+          <div><b>Idiomas</b>Español / Inglés</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- VSSoccer 1vsIA -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/exp/exp-14.jpg" alt="VSSoccer 1 vs IA" />
+        <div class="play" data-video="vssoccer-ia"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-compite">Compite</span>
+        <h3>VSSoccer</h3>
+        <div class="subtitle">Modo 1 vs IA</div>
+        <p class="desc">Modalidad individual contra inteligencia artificial. Misma mecánica competitiva, ideal para flujo continuo en activaciones con alta rotación.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>1 jugador</div>
+          <div><b>Duración</b>90 segundos</div>
+          <div><b>Rendimiento</b>12 jugadores/h</div>
+          <div><b>Personalización</b>Disponible</div>
+          <div><b>Staff</b>1 asistente/puesto</div>
+          <div><b>Idiomas</b>Español / Inglés</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- VSBasket -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/exp/exp-16.jpg" alt="VSBasket" />
+        <div class="play" data-video="vsbasket"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-compite">Compite</span>
+        <h3>VSBasket</h3>
+        <div class="subtitle">Concurso de triples</div>
+        <p class="desc">Experiencia inmersiva de baloncesto. Ajusta fuerza, arco y efecto del balón con control absoluto de tus manos. Modo contrarreloj para máxima puntuación.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>1 jugador</div>
+          <div><b>Duración</b>90 segundos</div>
+          <div><b>Rendimiento</b>17 jugadores/h</div>
+          <div><b>Personalización</b>Disponible</div>
+          <div><b>Staff</b>1 asistente/puesto</div>
+          <div><b>Idiomas</b>Español / Inglés</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SuperPlayer Keeper -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/exp/exp-18.jpg" alt="SuperPlayer Keeper Mode" />
+        <div class="play" data-video="sp-keeper"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-compite">Compite</span>
+        <h3>SuperPlayer</h3>
+        <div class="subtitle">Keeper Mode</div>
+        <p class="desc">Ponte los guantes y demuestra tus reflejos. Despeja, palmea o atrapa al vuelo. Disparos rasos, altos y con efecto.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>1 jugador</div>
+          <div><b>Duración</b>60 / 90 / 120 s</div>
+          <div><b>Rendimiento</b>hasta 20 jugadores/h</div>
+          <div><b>Personalización</b>Parcial</div>
+          <div><b>Staff</b>1 asistente/puesto</div>
+          <div><b>Idiomas</b>Español / Inglés</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SuperPlayer Header -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/exp/exp-20.jpg" alt="SuperPlayer Header Mode" />
+        <div class="play" data-video="sp-header"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-compite">Compite</span>
+        <h3>SuperPlayer</h3>
+        <div class="subtitle">Header Mode</div>
+        <p class="desc">Remate de cabeza contra dianas en la portería. Cuanto más pequeña la diana, más puntos. Precisión y técnica del delantero.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>1 jugador</div>
+          <div><b>Duración</b>60 / 90 / 120 s</div>
+          <div><b>Rendimiento</b>hasta 20 jugadores/h</div>
+          <div><b>Personalización</b>Parcial</div>
+          <div><b>Staff</b>1 asistente/puesto</div>
+          <div><b>Idiomas</b>Español / Inglés</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SuperPlayer Rhythm -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/exp/exp-22.jpg" alt="SuperPlayer Rhythm Mode" />
+        <div class="play" data-video="sp-rhythm"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-compite">Compite</span>
+        <h3>SuperPlayer</h3>
+        <div class="subtitle">Rhythm Mode</div>
+        <p class="desc">Acción rítmica donde la música marca el juego. Bloquea, esquiva y reacciona a balones y obstáculos sincronizados con el ritmo.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>1 jugador</div>
+          <div><b>Duración</b>150 segundos</div>
+          <div><b>Rendimiento</b>13 jugadores/h</div>
+          <div><b>Personalización</b>Parcial</div>
+          <div><b>Staff</b>1 asistente/puesto</div>
+          <div><b>Idiomas</b>Español / Inglés</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Vertigoal Footnambulist -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/exp/exp-24.jpg" alt="Vertigoal The Footnambulist" />
+        <div class="play" data-video="vertigoal-foot"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-diviertete">Diviértete</span>
+        <h3>Vertigoal</h3>
+        <div class="subtitle">The Footnambulist</div>
+        <p class="desc">Cruza una pasarela suspendida a 54 metros sobre el estadio. Equilibrio, vértigo y nervios de acero. Solo para los más atrevidos.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>1 jugador</div>
+          <div><b>Duración</b>120 segundos</div>
+          <div><b>Rendimiento</b>15 jugadores/h</div>
+          <div><b>Personalización</b>No disponible</div>
+          <div><b>Staff</b>1 asistente/puesto</div>
+          <div><b>Idiomas</b>N/A</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Vertigoal Stadium Scaler -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/exp/exp-25.jpg" alt="Vertigoal Stadium Scaler" />
+        <div class="play" data-video="vertigoal-scaler"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-diviertete">Diviértete</span>
+        <h3>Vertigoal</h3>
+        <div class="subtitle">Stadium Scaler</div>
+        <p class="desc">Escalada inmersiva en un muro vertical de rutas, presas y desafíos. Fuerza, estrategia y rapidez contrarreloj para conquistar la cima.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>1 jugador</div>
+          <div><b>Duración</b>120 segundos</div>
+          <div><b>Rendimiento</b>15 jugadores/h</div>
+          <div><b>Personalización</b>No disponible</div>
+          <div><b>Staff</b>1 asistente/puesto</div>
+          <div><b>Idiomas</b>N/A</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Vertigoal Air Striker -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/exp/exp-26.jpg" alt="Vertigoal Air Striker" />
+        <div class="play" data-video="vertigoal-airstriker"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-diviertete">Diviértete</span>
+        <h3>Vertigoal</h3>
+        <div class="subtitle">Air Striker</div>
+        <p class="desc">Surca el cielo del estadio en un circuito aéreo de aros. Velocidad, precisión y control total de tu trayectoria. Reflejos y sangre fría.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>1 jugador</div>
+          <div><b>Duración</b>120 segundos</div>
+          <div><b>Rendimiento</b>15 jugadores/h</div>
+          <div><b>Personalización</b>No disponible</div>
+          <div><b>Staff</b>1 asistente/puesto</div>
+          <div><b>Idiomas</b>N/A</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- BeFootball Academy -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/full/full-11.jpg" alt="BeFootball Academy" />
+        <div class="play" data-video="academy"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-entrena">Entrena</span>
+        <h3>BeFootball Academy</h3>
+        <div class="subtitle">4 Game Modes · Keeper &amp; Header Training</div>
+        <p class="desc">Plataforma de entrenamiento inmersivo para mejorar reflejos, coordinación y toma de decisiones. Incluye módulos específicos de portero y rematador.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>1 jugador</div>
+          <div><b>Duración</b>Modular</div>
+          <div><b>Rendimiento</b>Sesión</div>
+          <div><b>Personalización</b>Disponible</div>
+          <div><b>Staff</b>1 asistente/puesto</div>
+          <div><b>Idiomas</b>Español / Inglés</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Aidols -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/full/full-23.jpg" alt="Aidols" />
+        <div class="play" data-video="aidols"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-conecta">Conecta</span>
+        <h3>Aidols</h3>
+        <div class="subtitle">Ídolos &amp; personajes interactivos</div>
+        <p class="desc">Experiencias digitales y personajes interactivos diseñados para conectar marcas, fans y comunidades mediante nuevas narrativas inmersivas.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>Variable</div>
+          <div><b>Duración</b>A medida</div>
+          <div><b>Rendimiento</b>A medida</div>
+          <div><b>Personalización</b>Total</div>
+          <div><b>Staff</b>Según activación</div>
+          <div><b>Idiomas</b>Multilenguaje</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Productora 180° + BFTalks -->
+    <article class="exp-card">
+      <div class="visual">
+        <img src="assets/full/full-21.jpg" alt="Productora 180° y BFTalks" />
+        <div class="play" data-video="bftalks"><span>▶</span></div>
+      </div>
+      <div class="body">
+        <span class="exp-cat cat-another">Another Reality</span>
+        <h3>Productora 180° + BFTalks</h3>
+        <div class="subtitle">Branded content &amp; conversación</div>
+        <p class="desc">Producción de contenido inmersivo audiovisual en formato 180°, branded content y experiencias premium. Formato BFTalks para fútbol, innovación y cultura deportiva.</p>
+        <div class="exp-specs">
+          <div><b>Capacidad simultánea</b>Audiencia abierta</div>
+          <div><b>Duración</b>A medida</div>
+          <div><b>Rendimiento</b>N/A</div>
+          <div><b>Personalización</b>Total</div>
+          <div><b>Staff</b>Equipo de producción</div>
+          <div><b>Idiomas</b>Multilenguaje</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- BANNER FULL: Are you ready -->
+<div class="fullbleed"><img src="assets/full/full-11.jpg" alt="Are you ready" /></div>
+
+<!-- PAQUETES -->
+<section id="paquetes">
+  <div class="container">
+    <div class="eyebrow">Paquetes</div>
+    <h2 class="section-title">Cuatro niveles, una promesa: <span style="color:var(--accent)">impacto</span></h2>
+    <p class="section-sub">De activación express a IP de marca llave en mano. Cada paquete define experiencias, entregables técnicos, tiempos y nivel de personalización.</p>
+
+    <div class="pkg-grid">
+
+      <div class="pkg">
+        <div class="name">01 · Starter</div>
+        <div class="tier">Event Pack</div>
+        <div class="ideal">Ideal: agencias BTL, corporate, startups</div>
+
+        <div class="feat-block">
+          <div class="feat-title">Experiencias incluidas</div>
+          <ul>
+            <li>1 experiencia a elegir (catálogo Compite o Diviértete)</li>
+            <li>Modo individual (1 jugador o 1 vs IA)</li>
+            <li>Hasta 2 puestos VR simultáneos</li>
+          </ul>
+        </div>
+        <div class="feat-block">
+          <div class="feat-title">Entregables técnicos</div>
+          <ul>
+            <li>Gafas VR + setup técnico</li>
+            <li>Backdrop básico de marca (logo splash + frame)</li>
+            <li>Captura de fotos/clips del jugador</li>
+            <li>Soporte de 1 asistente por puesto</li>
+          </ul>
+        </div>
+        <div class="feat-block">
+          <div class="feat-title">Personalización</div>
+          <ul>
+            <li>Branding parcial: logo en pantalla y materiales físicos</li>
+            <li>Sin desarrollo a medida</li>
+          </ul>
+        </div>
+        <div class="specs">
+          <div><b>Producción</b>1–2 semanas</div>
+          <div><b>Operación</b>4–8 h/evento</div>
+          <div><b>Rendimiento</b>12–20 j/h</div>
+          <div><b>Idiomas</b>ES / EN</div>
+        </div>
+      </div>
+
+      <div class="pkg featured">
+        <span class="ribbon">Más solicitado</span>
+        <div class="name">02 · Pro</div>
+        <div class="tier">Brand Experience</div>
+        <div class="ideal">Ideal: marcas, anunciantes, ferias premium</div>
+
+        <div class="feat-block">
+          <div class="feat-title">Experiencias incluidas</div>
+          <ul>
+            <li>2–3 experiencias del catálogo (mix de categorías)</li>
+            <li>VSSoccer 1v1 + Keeper / Header / Rhythm</li>
+            <li>Hasta 4 puestos VR simultáneos</li>
+          </ul>
+        </div>
+        <div class="feat-block">
+          <div class="feat-title">Entregables técnicos</div>
+          <ul>
+            <li>Personalización gráfica in-game (vallas, escenarios, splash)</li>
+            <li>Ranking en vivo + leaderboard con marca</li>
+            <li>Captura broadcast + reels editados para RRSS</li>
+            <li>Reporte de datos del evento</li>
+            <li>Staff técnico y de azafatos por puesto</li>
+          </ul>
+        </div>
+        <div class="feat-block">
+          <div class="feat-title">Personalización</div>
+          <ul>
+            <li>Branding completo dentro de la experiencia</li>
+            <li>Wrap visual del stand (opcional)</li>
+            <li>Música/voz locutada de marca</li>
+          </ul>
+        </div>
+        <div class="specs">
+          <div><b>Producción</b>3–5 semanas</div>
+          <div><b>Operación</b>1–3 días</div>
+          <div><b>Rendimiento</b>60–80 j/h</div>
+          <div><b>Idiomas</b>ES / EN (+1)</div>
+        </div>
+      </div>
+
+      <div class="pkg">
+        <div class="name">03 · Signature</div>
+        <div class="tier">Sports IP Edition</div>
+        <div class="ideal">Ideal: clubes, federaciones, ligas, hospitality</div>
+
+        <div class="feat-block">
+          <div class="feat-title">Experiencias incluidas</div>
+          <ul>
+            <li>VSSoccer 1v1 + 2vs2 + BeFootball Academy</li>
+            <li>SuperPlayer (Keeper / Header / Rhythm)</li>
+            <li>Aidols (ídolo digital del club o partner)</li>
+            <li>4–8 puestos VR + 1 zona Productora 180°</li>
+          </ul>
+        </div>
+        <div class="feat-block">
+          <div class="feat-title">Entregables técnicos</div>
+          <ul>
+            <li>Estadio virtual con identidad del club</li>
+            <li>Vallas dinámicas para sponsors (slots monetizables)</li>
+            <li>Sistema de torneo + rankings persistentes</li>
+            <li>App companion / web de leaderboard</li>
+            <li>Producción de contenido 180° de la activación</li>
+            <li>Operativa multi-fecha (gira / matchday recurrente)</li>
+          </ul>
+        </div>
+        <div class="feat-block">
+          <div class="feat-title">Personalización</div>
+          <ul>
+            <li>Co-branding club + sponsors</li>
+            <li>Skins, equipaciones e ídolos digitales</li>
+            <li>Estrategia comercial doubleW de activación de derechos</li>
+          </ul>
+        </div>
+        <div class="specs">
+          <div><b>Producción</b>6–10 semanas</div>
+          <div><b>Operación</b>Temporada / gira</div>
+          <div><b>Rendimiento</b>100+ j/h</div>
+          <div><b>Idiomas</b>ES/EN/AR + locales</div>
+        </div>
+      </div>
+
+      <div class="pkg">
+        <div class="name">04 · Custom</div>
+        <div class="tier">Wow Atelier</div>
+        <div class="ideal">Ideal: marcas globales, IPs propias, lanzamientos categoría</div>
+
+        <div class="feat-block">
+          <div class="feat-title">Experiencias incluidas</div>
+          <ul>
+            <li>Desarrollo de experiencia VR propia desde cero</li>
+            <li>Posibilidad de IP conjunta (modelo wowinX × cliente)</li>
+            <li>Integración con activos existentes del cliente</li>
+          </ul>
+        </div>
+        <div class="feat-block">
+          <div class="feat-title">Entregables técnicos</div>
+          <ul>
+            <li>Diseño narrativo, mecánicas y arte original</li>
+            <li>Producción audiovisual 180°/360° y CGI</li>
+            <li>Backend, ranking global, app companion</li>
+            <li>Estrategia go-to-market doubleW (marketing, PR, partners)</li>
+            <li>Roadmap evolutivo y soporte continuo</li>
+          </ul>
+        </div>
+        <div class="feat-block">
+          <div class="feat-title">Personalización</div>
+          <ul>
+            <li>100% a medida (concept, IP, mecánicas, escenarios)</li>
+            <li>Modelo de licenciamiento o coproducción disponible</li>
+          </ul>
+        </div>
+        <div class="specs">
+          <div><b>Producción</b>12–24 semanas</div>
+          <div><b>Operación</b>Permanente</div>
+          <div><b>Rendimiento</b>A diseño</div>
+          <div><b>Idiomas</b>Multilenguaje</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATRIZ -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Matriz comercial</div>
+    <h2 class="section-title">Niveles de personalización por paquete</h2>
+    <p class="section-sub">Visión rápida para el equipo comercial: qué capa de personalización ofrece cada paquete y dónde se diferencia.</p>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th>Capa</th><th>Starter</th><th>Pro</th><th>Signature</th><th>Custom</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Logo splash / pantalla</b></td><td class="yes">Sí</td><td class="yes">Sí</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+        <tr><td><b>Branding in-game (vallas, escenarios)</b></td><td class="no">No</td><td class="yes">Sí</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+        <tr><td><b>Skins / equipaciones / ídolos</b></td><td class="no">No</td><td class="partial">Parcial</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+        <tr><td><b>Ranking + leaderboard con marca</b></td><td class="no">No</td><td class="yes">Sí</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+        <tr><td><b>App / web companion</b></td><td class="no">No</td><td class="partial">Opcional</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+        <tr><td><b>Mecánicas / narrativa propias</b></td><td class="no">No</td><td class="no">No</td><td class="partial">Parcial</td><td class="yes">100%</td></tr>
+        <tr><td><b>Estrategia go-to-market doubleW</b></td><td class="no">No</td><td class="partial">Opcional</td><td class="yes">Sí</td><td class="yes">Incluida</td></tr>
+        <tr><td><b>Activación multi-fecha / gira</b></td><td class="no">No</td><td class="partial">Opcional</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="container">
+    <div class="eyebrow">Cómo trabajamos</div>
+    <h2 class="section-title">De brief a activación, en 5 pasos</h2>
+    <p class="section-sub">Un proceso probado en +20 ciudades y con marcas top tier: FIFA, LaLiga, adidas, Atlético de Madrid, Decathlon, Orange, MediaMarkt.</p>
+    <div class="timeline">
+      <div class="step"><div class="num">01</div><h4>Discovery</h4><p>Brief, objetivos de negocio, KPIs y selección de tipología de cliente.</p></div>
+      <div class="step"><div class="num">02</div><h4>Concept</h4><p>Recomendación de paquete, mix de experiencias y nivel de personalización.</p></div>
+      <div class="step"><div class="num">03</div><h4>Producción</h4><p>Desarrollo técnico en estudios wowinX (WX·180, Trivium, The Other Side, Prisma XR).</p></div>
+      <div class="step"><div class="num">04</div><h4>Activación</h4><p>Operativa llave en mano: setup, staff, captura de contenido y data.</p></div>
+      <div class="step"><div class="num">05</div><h4>Capitalización</h4><p>doubleW proyecta resultados, contenido y aprendizajes hacia el mercado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER FINAL -->
+<div class="fullbleed"><img src="assets/full/full-27.jpg" alt="Vertigoal · cierre visual" /></div>
+
+<!-- CTA -->
+<div class="cta" id="contacto">
+  <div class="container">
+    <h2>¿Listos para una <span class="accent">nueva área experiencial</span>?</h2>
+    <p>Hablemos de tu marca, tu evento o tu IP. En 48 horas tendrás propuesta y recomendación de paquete.</p>
+    <a class="btn" href="mailto:juana.estevez@wowinx.com">Contactar comercial</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div>wowinX × doubleW · Experiencias 2026</div>
+    <div class="hq">
+      <div><b>EUROPE HQ</b>Madrid · 75 Albasanz Street</div>
+      <div><b>MIDDLE EAST HQ</b>Dubai · IFZA Business Park</div>
+      <div><b>CONTACT</b>juana.estevez@wowinx.com</div>
+    </div>
+  </div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="videoModal">
+  <div class="frame">
+    <button class="close" onclick="closeVideo()">✕</button>
+    <div id="videoSlot">
+      <div class="placeholder-msg">
+        <div class="big">Vídeo no disponible aún</div>
+        <div>Comparte los enlaces (YouTube / Vimeo / MP4) de cada experiencia<br/>y los incrustamos automáticamente.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mapa de vídeos: pega aquí los URLs cuando los tengas
+  // Soporta YouTube, Vimeo o MP4 directo
+  const VIDEOS = {
+    "vssoccer-1v1": "",
+    "vssoccer-ia": "",
+    "vsbasket": "",
+    "sp-keeper": "",
+    "sp-header": "",
+    "sp-rhythm": "",
+    "vertigoal-foot": "",
+    "vertigoal-scaler": "",
+    "vertigoal-airstriker": "",
+    "academy": "",
+    "aidols": "",
+    "bftalks": ""
+  };
+
+  document.querySelectorAll('.play').forEach(el=>{
+    el.addEventListener('click',()=>openVideo(el.dataset.video));
+  });
+
+  function openVideo(key){
+    const url = VIDEOS[key];
+    const slot = document.getElementById('videoSlot');
+    const modal = document.getElementById('videoModal');
+    if(!url){
+      slot.innerHTML = `<div class="placeholder-msg">
+        <div class="big">Vídeo próximamente</div>
+        <div>Esta demo se incrustará en cuanto recibamos el enlace.<br/><small style="opacity:.5">key: ${key}</small></div>
+      </div>`;
+    } else if(url.includes('youtube.com')||url.includes('youtu.be')){
+      const id = url.split(/v=|youtu\.be\//)[1].split(/[?&]/)[0];
+      slot.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+    } else if(url.includes('vimeo.com')){
+      const id = url.split('vimeo.com/')[1].split(/[?&/]/)[0];
+      slot.innerHTML = `<iframe src="https://player.vimeo.com/video/${id}?autoplay=1" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+    } else {
+      slot.innerHTML = `<video src="${url}" controls autoplay></video>`;
+    }
+    modal.classList.add('active');
+  }
+  function closeVideo(){
+    document.getElementById('videoSlot').innerHTML='';
+    document.getElementById('videoModal').classList.remove('active');
+  }
+  document.getElementById('videoModal').addEventListener('click',e=>{
+    if(e.target.id==='videoModal') closeVideo();
+  });
+</script>
+</body>
+</html>
