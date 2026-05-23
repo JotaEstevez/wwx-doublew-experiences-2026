@@ -100,13 +100,57 @@
   }
   .eco-card{
     border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--bg-card);
-    transition:transform .25s ease,border-color .25s ease;
+    transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+    cursor:pointer;position:relative;text-align:left;width:100%;font-family:inherit;color:inherit;padding:0;
   }
-  .eco-card:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .eco-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 40px -22px rgba(206,251,0,.45)}
+  .eco-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   .eco-card img{width:100%;height:180px;object-fit:cover}
-  .eco-card .body{padding:14px 16px}
+  .eco-card .body{padding:14px 16px;position:relative}
   .eco-card h4{font-size:14px;font-weight:700;margin-bottom:4px}
   .eco-card p{font-size:12.5px;color:var(--text-dim)}
+  .eco-card .more{
+    position:absolute;top:14px;right:14px;background:var(--accent);color:#0a0a0a;
+    font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+    padding:4px 9px;border-radius:999px;
+  }
+
+  /* MODAL INTERSTICIAL (ecosistema y matriz) */
+  .modal.info .frame{
+    aspect-ratio:auto;max-width:780px;max-height:90vh;background:var(--bg-card);
+    border:1px solid var(--accent);overflow:auto;
+  }
+  .modal.info .info-wrap{padding:0}
+  .modal.info .info-hero{
+    width:100%;height:240px;background:#000;position:relative;overflow:hidden;
+  }
+  .modal.info .info-hero img{width:100%;height:100%;object-fit:cover;opacity:.85}
+  .modal.info .info-hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,10,10,.1) 0%,rgba(21,21,26,1) 100%);
+  }
+  .modal.info .info-body{padding:28px 34px 34px}
+  .modal.info .info-eyebrow{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+    margin-bottom:8px;font-weight:700;
+  }
+  .modal.info .info-body h3{font-size:28px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px;line-height:1.15}
+  .modal.info .info-body p{font-size:15px;color:var(--text-dim);margin-bottom:14px;line-height:1.6}
+  .modal.info .info-body p strong{color:var(--text);font-weight:600}
+  .modal.info .info-body ul{list-style:none;margin:10px 0 4px}
+  .modal.info .info-body li{font-size:14px;color:var(--text);padding:7px 0 7px 20px;position:relative;border-bottom:1px solid var(--border)}
+  .modal.info .info-body li:last-child{border-bottom:none}
+  .modal.info .info-body li::before{content:"";position:absolute;left:0;top:15px;width:10px;height:2px;background:var(--accent)}
+  .modal.info .info-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .modal.info .info-tag{
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    padding:5px 10px;border:1px solid var(--border);border-radius:999px;color:var(--text-dim);
+  }
+  @media (max-width:640px){
+    .modal.info .info-hero{height:160px}
+    .modal.info .info-body{padding:22px 22px 28px}
+    .modal.info .info-body h3{font-size:22px}
+  }
 
   /* FULL BLEED BANNERS */
   .fullbleed{
@@ -300,22 +344,22 @@
     </p>
 
     <div class="eco-grid">
-      <div class="eco-card">
+      <button class="eco-card" type="button" data-info="ecosistema">
         <img src="assets/full/full-3.jpg" alt="Ecosistema wowinX" />
-        <div class="body"><h4>Ecosistema</h4><p>Agencia (doubleW), estudios y IPs propias.</p></div>
-      </div>
-      <div class="eco-card">
+        <div class="body"><span class="more">Ver +</span><h4>Ecosistema</h4><p>Agencia (doubleW), estudios y IPs propias.</p></div>
+      </button>
+      <button class="eco-card" type="button" data-info="befootball">
         <img src="assets/full/full-5.jpg" alt="BeFootball" />
-        <div class="body"><h4>BeFootball</h4><p>Nueva capa inmersiva del fútbol. Categoría, derechos y territorio.</p></div>
-      </div>
-      <div class="eco-card">
+        <div class="body"><span class="more">Ver +</span><h4>BeFootball</h4><p>Nueva capa inmersiva del fútbol. Categoría, derechos y territorio.</p></div>
+      </button>
+      <button class="eco-card" type="button" data-info="vr-marcas">
         <img src="assets/full/full-6.jpg" alt="VR en marcas y eventos" />
-        <div class="body"><h4>VR para marcas y eventos</h4><p>Del espectador al protagonista. Engagement y diferenciación.</p></div>
-      </div>
-      <div class="eco-card">
+        <div class="body"><span class="more">Ver +</span><h4>VR para marcas y eventos</h4><p>Del espectador al protagonista. Engagement y diferenciación.</p></div>
+      </button>
+      <button class="eco-card" type="button" data-info="another-reality">
         <img src="assets/full/full-9.jpg" alt="Another reality" />
-        <div class="body"><h4>Another Reality</h4><p>Compite · Entrena · Conecta · Diviértete.</p></div>
-      </div>
+        <div class="body"><span class="more">Ver +</span><h4>Another Reality</h4><p>Compite · Entrena · Conecta · Diviértete.</p></div>
+      </button>
     </div>
   </div>
 </section>
@@ -385,8 +429,8 @@
   </div>
 </section>
 
-<!-- BANNER FULL: tabla 5 categorías -->
-<div class="fullbleed"><img src="assets/full/full-10.jpg" alt="5 categorías de experiencias BeFootball" /></div>
+<!-- BANNER FULL: tabla 5 categorías (versión legible) -->
+<div class="fullbleed"><img src="assets/experiencias-matrix.jpg" alt="Nuestras experiencias · 5 categorías, un mismo objetivo: crear impacto" /></div>
 
 <!-- EXPERIENCIAS -->
 <section id="experiencias">
@@ -910,6 +954,14 @@
   </div>
 </div>
 
+<!-- INFO MODAL (ecosistema) -->
+<div class="modal info" id="infoModal">
+  <div class="frame">
+    <button class="close" onclick="closeInfo()">✕</button>
+    <div class="info-wrap" id="infoSlot"></div>
+  </div>
+</div>
+
 <script>
   // Mapa de vídeos: pega aquí los URLs cuando los tengas
   // Soporta YouTube, Vimeo o MP4 directo
@@ -958,6 +1010,99 @@
   }
   document.getElementById('videoModal').addEventListener('click',e=>{
     if(e.target.id==='videoModal') closeVideo();
+  });
+
+  // ===== INFO MODAL (ecosistema) =====
+  const INFO = {
+    "ecosistema": {
+      image: "assets/full/full-3.jpg",
+      eyebrow: "Infraestructura",
+      title: "El ecosistema wowinX × doubleW",
+      body: `<p>Una <strong>infraestructura inmersiva global</strong> que combina dos motores comerciales complementarios y un conjunto de estudios e IPs propias para cubrir todo el ciclo de vida de una experiencia.</p>
+        <ul>
+          <li><strong>wowinX</strong> — imagina, produce y escala IPs y experiencias inmersivas (XR, IA y Web3).</strong></li>
+          <li><strong>doubleW</strong> — agencia que convierte cada activación en negocio: estrategia, mercado, lanzamiento y proyección global.</li>
+          <li><strong>Estudios propios</strong> — WX·180, Trivium, The Other Side y Prisma XR como motores de producción.</li>
+          <li><strong>IPs propias</strong> — BeFootball, BeFootball Academy, Virtual Sports e IMM como activos diferenciales.</li>
+        </ul>
+        <p>Resultado: una sola ventanilla para concebir, producir, activar y monetizar experiencias VR a escala global.</p>`,
+      tags: ["XR · IA · Web3", "4 estudios", "4+ IPs propias", "ES · MENA · LATAM"]
+    },
+    "befootball": {
+      image: "assets/full/full-5.jpg",
+      eyebrow: "IP estratégica",
+      title: "BeFootball · La nueva capa inmersiva del fútbol",
+      body: `<p><strong>BeFootball</strong> es la IP que reinventa la relación entre el fan y el fútbol a través de la realidad virtual. No es un producto: es una nueva <strong>categoría</strong>, con derechos, territorio y posibilidades de monetización propias.</p>
+        <ul>
+          <li><strong>Categoría propia</strong> — un género VR inédito basado en mecánicas de fútbol competitivo.</li>
+          <li><strong>Derechos y territorio</strong> — vallas dinámicas, sponsors, skins, ídolos digitales y rankings persistentes.</li>
+          <li><strong>Ecosistema completo</strong> — VSSoccer, SuperPlayer, BeFootball Academy, Vertigoal y BFTalks.</li>
+          <li><strong>Track record</strong> — activado con FIFA, LaLiga, RFEF, UEFA Champions League, Atlético de Madrid, adidas.</li>
+        </ul>
+        <p>El fan deja de mirar el fútbol: lo <strong>juega, lo entrena y lo siente</strong> dentro del estadio.</p>`,
+      tags: ["IP propia", "Sports & Entertainment", "+20 ciudades", "Monetizable"]
+    },
+    "vr-marcas": {
+      image: "assets/full/full-6.jpg",
+      eyebrow: "Brand experience",
+      title: "VR para marcas y eventos · Del espectador al protagonista",
+      body: `<p>Convertimos cada activación de marca o evento corporativo en una <strong>experiencia memorable, monetizable y compartible</strong>. Donde antes había un stand, hoy hay una nueva categoría experiencial.</p>
+        <ul>
+          <li><strong>Engagement real</strong> — el público pasa de espectador pasivo a protagonista activo.</li>
+          <li><strong>Diferenciación</strong> — posiciona la marca como referente de innovación frente a su competencia.</li>
+          <li><strong>Contenido nativo</strong> — captura broadcast, reels editados y UGC listos para RRSS.</li>
+          <li><strong>Data del evento</strong> — KPIs de jugadores/h, dwell time, leads, satisfacción y repetición.</li>
+        </ul>
+        <p>Casos: lanzamientos, ferias, retail experiencial, sampling premium, kick-offs, team building, convenciones y activaciones de patrocinio.</p>`,
+      tags: ["Marcas & anunciantes", "Agencias BTL", "Corporate", "Eventos premium"]
+    },
+    "another-reality": {
+      image: "assets/full/full-9.jpg",
+      eyebrow: "Plataforma",
+      title: "Another Reality · Compite · Entrena · Conecta · Diviértete",
+      body: `<p><strong>Another Reality</strong> es el universo experiencial que articula toda la oferta de wowinX bajo cuatro verbos que estructuran nuestro catálogo de 12 experiencias en 5 categorías.</p>
+        <ul>
+          <li><strong>Compite</strong> — VSSoccer (1v1, 1vsIA, 2vs2), VSBasket y SuperPlayer (Keeper · Header · Rhythm).</li>
+          <li><strong>Diviértete</strong> — Vertigoal: Footnambulist, Stadium Scaler y Air Striker.</li>
+          <li><strong>Entrena</strong> — BeFootball Academy con 4 modos de juego y entrenamientos específicos.</li>
+          <li><strong>Conecta</strong> — Aidols: ídolos y personajes digitales para conectar con audiencias jóvenes.</li>
+          <li><strong>Another Reality</strong> — Productora 180° y BFTalks: branded content y conversación.</li>
+        </ul>
+        <p>Una arquitectura modular que permite combinar experiencias según objetivo, segmento y paquete comercial.</p>`,
+      tags: ["12 experiencias", "5 categorías", "4 paquetes", "Modular"]
+    }
+  };
+
+  document.querySelectorAll('.eco-card').forEach(el=>{
+    el.addEventListener('click',()=>openInfo(el.dataset.info));
+  });
+
+  function openInfo(key){
+    const data = INFO[key];
+    if(!data) return;
+    const slot = document.getElementById('infoSlot');
+    const modal = document.getElementById('infoModal');
+    const tagsHtml = (data.tags||[]).map(t=>`<span class="info-tag">${t}</span>`).join('');
+    slot.innerHTML = `
+      <div class="info-hero"><img src="${data.image}" alt="${data.title}"/></div>
+      <div class="info-body">
+        <div class="info-eyebrow">${data.eyebrow}</div>
+        <h3>${data.title}</h3>
+        ${data.body}
+        ${tagsHtml?`<div class="info-tags">${tagsHtml}</div>`:''}
+      </div>`;
+    modal.classList.add('active');
+    modal.querySelector('.frame').scrollTop = 0;
+  }
+  function closeInfo(){
+    document.getElementById('infoModal').classList.remove('active');
+    document.getElementById('infoSlot').innerHTML='';
+  }
+  document.getElementById('infoModal').addEventListener('click',e=>{
+    if(e.target.id==='infoModal') closeInfo();
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){closeVideo();closeInfo();}
   });
 </script>
 </body>
