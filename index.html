@@ -261,10 +261,48 @@
   .step p{font-size:13px;color:var(--text-dim)}
 
   /* CASOS / MAPA */
-  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
-  .twocol .pic{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#000}
-  .twocol .pic img{width:100%;height:auto;display:block}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+  .twocol .pic{
+    border:1px solid var(--border);border-radius:18px;overflow:hidden;background:#000;
+    position:relative;cursor:pointer;display:block;width:100%;text-align:left;
+    padding:0;font-family:inherit;color:inherit;
+    transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+  }
+  .twocol .pic:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 18px 50px -24px rgba(206,251,0,.45)}
+  .twocol .pic:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .twocol .pic .pic-img{
+    width:100%;aspect-ratio:16/9;background:#000;display:block;overflow:hidden;
+  }
+  .twocol .pic .pic-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .twocol .pic .pic-caption{
+    padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    border-top:1px solid var(--border);background:var(--bg-card);
+  }
+  .twocol .pic .pic-caption .txt h4{font-size:18px;font-weight:800;margin-bottom:4px;letter-spacing:-.01em}
+  .twocol .pic .pic-caption .txt p{font-size:13px;color:var(--text-dim)}
+  .twocol .pic .pic-caption .more{
+    background:var(--accent);color:#0a0a0a;
+    font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+    padding:6px 12px;border-radius:999px;white-space:nowrap;
+  }
   @media (max-width:780px){.twocol{grid-template-columns:1fr}}
+
+  /* MODAL ANCHO (para imágenes grandes tipo casos / mapa) */
+  .modal.info.wide .frame{max-width:1100px}
+  .modal.info.wide .info-hero{height:auto;aspect-ratio:16/9;background:#000}
+  .modal.info.wide .info-hero img{object-fit:contain;opacity:1}
+  .modal.info.wide .info-hero::after{display:none}
+  .modal.info .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-top:18px}
+  .modal.info .cols .col h5{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
+    margin-bottom:8px;font-weight:700;
+  }
+  .modal.info .cols .col ul{margin:0}
+  .modal.info .cols .col li{font-size:14px;padding:5px 0 5px 18px;border-bottom:none}
+  .modal.info .cols .col li::before{top:13px;width:8px}
+  @media (max-width:640px){
+    .modal.info.wide .info-body{padding:22px 22px 28px}
+  }
 
   /* CTA */
   .cta{background:radial-gradient(800px 400px at 50% 0%, rgba(206,251,0,.12), transparent 60%),var(--bg);text-align:center;padding:100px 0;border-top:1px solid var(--border)}
@@ -371,8 +409,20 @@
     <h2 class="section-title">Casos de éxito y huella global</h2>
     <p class="section-sub">FIFA, LaLiga, adidas, Atlético de Madrid, RFEF, UEFA Champions League, Decathlon, MediaMarkt, Orange, Wanda Group, Legends, Soccerex. +20 ciudades en Europa, América y Medio Oriente.</p>
     <div class="twocol">
-      <div class="pic"><img src="assets/full/full-7.jpg" alt="Casos de éxito wowinX" /></div>
-      <div class="pic"><img src="assets/full/full-8.jpg" alt="BeFootball por el mundo" /></div>
+      <button class="pic" type="button" data-info="casos-exito">
+        <div class="pic-img"><img src="assets/full/full-7.jpg" alt="Casos de éxito wowinX" /></div>
+        <div class="pic-caption">
+          <div class="txt"><h4>Casos de éxito</h4><p>+20 marcas y federaciones top tier que ya han activado con nosotros.</p></div>
+          <span class="more">Ver +</span>
+        </div>
+      </button>
+      <button class="pic" type="button" data-info="huella-global">
+        <div class="pic-img"><img src="assets/full/full-8.jpg" alt="BeFootball por el mundo" /></div>
+        <div class="pic-caption">
+          <div class="txt"><h4>Huella global</h4><p>BeFootball por el mundo: Europa, Medio Oriente y América.</p></div>
+          <span class="more">Ver +</span>
+        </div>
+      </button>
     </div>
   </div>
 </section>
@@ -1073,7 +1123,114 @@
     }
   };
 
-  document.querySelectorAll('.eco-card').forEach(el=>{
+  // Tarjetas adicionales con modal: casos de éxito y huella global
+  INFO["casos-exito"] = {
+    image: "assets/full/full-7.jpg",
+    eyebrow: "Track record",
+    title: "Casos de éxito · Marcas y federaciones top tier",
+    body: `<p>Hemos activado experiencias inmersivas con <strong>las marcas, clubes, federaciones y agencias más relevantes del deporte y la cultura global</strong>. Cada logotipo representa una activación real entregada por wowinX × doubleW.</p>
+      <div class="cols">
+        <div class="col">
+          <h5>Fútbol · IPs deportivas</h5>
+          <ul>
+            <li>FIFA · World Cup</li>
+            <li>UEFA Champions League</li>
+            <li>LaLiga</li>
+            <li>RFEF</li>
+            <li>Atlético de Madrid</li>
+            <li>Estadio Azteca</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h5>Marcas globales</h5>
+          <ul>
+            <li>adidas (+ Predator, Crazyfast)</li>
+            <li>Nissan</li>
+            <li>Amazon</li>
+            <li>Orange</li>
+            <li>MediaMarkt</li>
+            <li>Decathlon</li>
+            <li>Intersport</li>
+            <li>Budweiser</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h5>Agencias & partners</h5>
+          <ul>
+            <li>Infront</li>
+            <li>Wanda Group</li>
+            <li>Legends (powered by LaLiga)</li>
+            <li>Soccerex</li>
+            <li>GSIC (powered by Microsoft)</li>
+            <li>Gamergy by Cecotec</li>
+            <li>Be On · Lastlap · Comunica+A</li>
+            <li>WFS · Fi Network</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h5>Instituciones & otros</h5>
+          <ul>
+            <li>Ayuntamiento de Gijón</li>
+            <li>Vargroup</li>
+            <li>QNB · Doha Festival City</li>
+            <li>Embassy Cup</li>
+            <li>Virtuocity</li>
+            <li>Tigres / Club América</li>
+          </ul>
+        </div>
+      </div>`,
+    tags: ["FIFA · LaLiga · UEFA", "adidas · Decathlon · MediaMarkt", "Atlético de Madrid · RFEF", "Top tier global"],
+    wide: true
+  };
+
+  INFO["huella-global"] = {
+    image: "assets/full/full-8.jpg",
+    eyebrow: "BeFootball por el mundo",
+    title: "Huella global · +20 ciudades activadas",
+    body: `<p>Desde 2023, BeFootball y las experiencias VR de wowinX han aterrizado en <strong>más de 20 ciudades</strong> de tres continentes: Europa, Medio Oriente y América. Cada activación se adapta al idioma, cultura y narrativa local.</p>
+      <div class="cols">
+        <div class="col">
+          <h5>Europa</h5>
+          <ul>
+            <li>Madrid</li>
+            <li>Gijón</li>
+            <li>Málaga</li>
+            <li>Granada</li>
+            <li>Zaragoza</li>
+            <li>Costa de Almería</li>
+            <li>Costa de la Luz</li>
+            <li>Costa Brava</li>
+            <li>Costa de Galicia</li>
+            <li>Andorra</li>
+            <li>París</li>
+            <li>Milán</li>
+            <li>Moscú</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h5>Medio Oriente</h5>
+          <ul>
+            <li>Doha</li>
+            <li>Dubai</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h5>América</h5>
+          <ul>
+            <li>Miami</li>
+            <li>México</li>
+            <li>Medellín</li>
+            <li>Costa Rica</li>
+            <li>Perú</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:18px">Operamos en <strong>ES · EN · AR</strong> y otros idiomas locales según mercado, con HQs en Madrid (Europa) y Dubai (Middle East).</p>`,
+    tags: ["+20 ciudades", "3 continentes", "ES · EN · AR", "HQ Madrid + Dubai"],
+    wide: true
+  };
+
+  document.querySelectorAll('.eco-card, .twocol .pic').forEach(el=>{
     el.addEventListener('click',()=>openInfo(el.dataset.info));
   });
 
@@ -1082,6 +1239,7 @@
     if(!data) return;
     const slot = document.getElementById('infoSlot');
     const modal = document.getElementById('infoModal');
+    modal.classList.toggle('wide', !!data.wide);
     const tagsHtml = (data.tags||[]).map(t=>`<span class="info-tag">${t}</span>`).join('');
     slot.innerHTML = `
       <div class="info-hero"><img src="${data.image}" alt="${data.title}"/></div>
