@@ -159,6 +159,37 @@
   }
   .fullbleed img{width:100%;max-width:1600px;height:auto}
 
+  /* SIZZLE VIDEO */
+  .sizzle{
+    width:100%;background:#000;position:relative;
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    display:flex;justify-content:center;
+  }
+  .sizzle video{width:100%;max-width:1600px;display:block;aspect-ratio:16/9;background:#000;object-fit:cover}
+  .sizzle .sizzle-meta{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    text-align:center;padding:0 24px;pointer-events:none;z-index:2;
+    text-shadow:0 4px 30px rgba(0,0,0,.9);
+    transition:opacity .4s ease;
+  }
+  .sizzle.playing .sizzle-meta{opacity:0}
+  .sizzle .sizzle-meta .eyebrow{color:var(--accent);margin-bottom:14px;font-size:13px;letter-spacing:.3em}
+  .sizzle .sizzle-meta h3{
+    font-size:clamp(28px,4.5vw,56px);font-weight:800;letter-spacing:-.02em;line-height:1.05;
+    margin-bottom:10px;color:var(--text);
+  }
+  .sizzle .sizzle-meta h3 .accent{color:var(--accent)}
+  .sizzle .sizzle-meta p{color:#e0e0e0;font-size:15px;max-width:560px;margin:0 auto}
+  .sizzle .sizzle-unmute{
+    position:absolute;bottom:18px;right:18px;z-index:3;
+    background:rgba(10,10,10,.7);backdrop-filter:blur(8px);
+    color:var(--accent);border:1px solid var(--accent);
+    width:42px;height:42px;border-radius:50%;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+    transition:transform .2s ease;
+  }
+  .sizzle .sizzle-unmute:hover{transform:scale(1.08)}
+
   /* SEGMENTOS */
   .seg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
   .seg-card{
@@ -941,8 +972,19 @@
   </div>
 </section>
 
-<!-- BANNER FINAL -->
-<div class="fullbleed"><img src="assets/full/full-27.jpg" alt="Vertigoal · cierre visual" /></div>
+<!-- SIZZLE VIDEO -->
+<div class="sizzle" id="sizzleSection">
+  <video id="sizzleVideo" 
+    src="assets/video/sizzle-2026.mp4" 
+    poster="assets/video/sizzle-poster.jpg" 
+    autoplay muted loop playsinline preload="metadata"></video>
+  <div class="sizzle-meta">
+    <div class="eyebrow">wowinX × doubleW · 2026</div>
+    <h3>Convierte cada activación en una <span class="accent">nueva categoría</span> experiencial.</h3>
+    <p>XR, IA y Web3 al servicio de marcas, clubes y eventos. Una infraestructura inmersiva global.</p>
+  </div>
+  <button class="sizzle-unmute" id="sizzleUnmute" title="Activar sonido">🔇</button>
+</div>
 
 <!-- CTA -->
 <div class="cta" id="contacto">
@@ -1235,6 +1277,30 @@
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'){closeVideo();closeInfo();}
   });
+
+  // ===== SIZZLE VIDEO: hide overlay after a couple seconds, allow unmute =====
+  (function(){
+    const section = document.getElementById('sizzleSection');
+    const video = document.getElementById('sizzleVideo');
+    const unmuteBtn = document.getElementById('sizzleUnmute');
+    if(!section||!video||!unmuteBtn) return;
+    // Reveal video properly after metadata loads
+    video.addEventListener('loadeddata',()=>{
+      setTimeout(()=>section.classList.add('playing'), 2800);
+    });
+    unmuteBtn.addEventListener('click',e=>{
+      e.stopPropagation();
+      if(video.muted){
+        video.muted=false; video.volume=0.6;
+        unmuteBtn.textContent='🔊';
+        unmuteBtn.title='Silenciar';
+      } else {
+        video.muted=true;
+        unmuteBtn.textContent='🔇';
+        unmuteBtn.title='Activar sonido';
+      }
+    });
+  })();
 </script>
 </body>
 </html>
